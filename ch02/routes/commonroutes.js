@@ -1,23 +1,12 @@
 const express = require("express");
 const router = express.Router();
+const aboutPage = require("../controllers/getAboutPage");
+const homePage = require("../controllers/getHomePage");
+const contactPage = require("../controllers/getContactPage");
+router.get("/", homePage);
 
-router.get("/", (req, res) => {
-  res.send("<h1>Home Page<h1>");
-});
+router.get("/about", aboutPage);
 
-router.get("/about", (req, res) => {
-  res.send("<h1>About Page<h1>");
-});
-
-router.get("/contact", (req, res) => {
-  res.send("<h1> Contact Page<h1>");
-});
-
-router.get("/api/team/digital", (req, res) => {
-  res.json([
-    { eid: 2313, name: "sandeep" },
-    { eid: 2314, name: "john" },
-  ]);
-});
+router.get("/contact", contactPage);
 
 module.exports = router;
